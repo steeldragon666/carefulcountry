@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Careful Country — Indigenous Commercial Advisory</title>
+<meta name="description" content="Careful Country partners with business and community across Australia to secure the best commercial terms in tendering, business development, and native title land utilisation across agriculture, energy, and mining.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   CAREFUL COUNTRY — DESIGN SYSTEM v3
+   DIFFERENTIATED FROM DEADLY CONSULTING
+   ─────────────────────────────────────
+   Deadly: DM Serif Display, ochre/gold (#C4722A), dark theme, cinematic
+   Careful: Fraunces, bush green (#2E6B4A), light theme, editorial
+   ============================================================ */
+:root {
+  /* Canvas — warm white, distinctly lighter than Deadly's warm black */
+  --canvas:#FAFAF7;
+  --canvas-warm:#F4F2ED;
+  --surface:#FFFFFF;
+  --surface-warm:#F9F8F5;
+  --border:#E2DED6;
+  --border-strong:#C8C3B8;
+
+  /* Brand — GREEN primary (Deadly uses gold/ochre) */
+  --green:#2E6B4A;
+  --green-dark:#1E5438;
+  --green-light:#4A8A66;
+  --green-pale:rgba(46,107,74,0.06);
+  --green-soft:rgba(46,107,74,0.12);
+
+  /* Supporting warmth — amber NOT terracotta/ochre (Deadly's territory) */
+  --amber:#C4862A;
+  --amber-soft:#DCA648;
+  --amber-pale:rgba(196,134,42,0.08);
+
+  /* Neutrals — cool-toned charcoal (Deadly uses warm black) */
+  --charcoal:#1F2937;
+  --charcoal-soft:#374151;
+  --slate:#4B5563;
+
+  /* Earth tones — muted, different register from Deadly */
+  --stone:#9CA3AF;
+  --sand:#D1CBC0;
+
+  /* Text */
+  --text:#1F2937;
+  --text-secondary:#6B7280;
+  --text-muted:#9CA3AF;
+  --text-inverse:#FAFAF7;
+
+  /* Typography — COMPLETELY different from Deadly */
+  --font-display:'Fraunces',Georgia,serif;       /* Deadly: DM Serif Display */
+  --font-body:'Outfit',-apple-system,sans-serif;  /* Deadly: Inter */
+
+  /* Motion — restrained (Deadly: heavy parallax/particles) */
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --ease-smooth:cubic-bezier(0.4,0,0.2,1);
+  --speed-fast:200ms;
+  --speed-med:400ms;
+  --speed-slow:700ms;
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-body);color:var(--text);background:var(--canvas);line-height:1.7;overflow-x:hidden;font-weight:400}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:inherit}
+
+/* ── TYPOGRAPHY ── */
+h1,h2,h3,h4{font-family:var(--font-display);font-weight:500;line-height:1.15;font-optical-sizing:auto}
+h1{font-size:clamp(2.6rem,5.5vw,4.8rem);letter-spacing:-0.03em;font-weight:600}
+h2{font-size:clamp(1.9rem,3.5vw,3rem);letter-spacing:-0.02em}
+h3{font-size:clamp(1.4rem,2.2vw,1.9rem)}
+h4{font-size:clamp(1.1rem,1.5vw,1.35rem)}
+.container{width:100%;max-width:1320px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+
+/* Labels — different treatment from Deadly's monospace labels */
+.label{font-family:var(--font-body);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--green)}
+.label--light{color:var(--green-light)}
+
+/* ============================================================
+   NAVIGATION — clean, professional (vs Deadly's cinematic)
+   ============================================================ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:all .35s var(--ease-smooth);background:transparent}
+.nav.scrolled{background:rgba(250,250,247,0.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:12px 0}
+.nav__inner{display:flex;align-items:center;justify-content:space-between}
+
+/* Logo — geometric mark, very different from Deadly's serif wordmark */
+.nav__logo{display:flex;align-items:center;gap:12px}
+.nav__logo-mark{width:40px;height:40px;transition:transform .3s var(--ease)}
+.nav__logo:hover .nav__logo-mark{transform:rotate(15deg)}
+.nav__logo-text{line-height:1.15}
+.nav__logo-name{font-family:var(--font-display);font-size:1.25rem;font-weight:600;color:var(--text);transition:color .35s}
+.nav__logo-tagline{font-family:var(--font-body);font-size:0.58rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);font-weight:600}
+
+.nav__links{display:flex;align-items:center;gap:28px;list-style:none}
+.nav__link{font-size:0.84rem;font-weight:500;color:var(--text-secondary);transition:color .2s;position:relative}
+.nav__link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--green);transition:width .3s var(--ease)}
+.nav__link:hover{color:var(--text)}
+.nav__link:hover::after{width:100%}
+.nav__cta{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:var(--green);color:white;border-radius:6px;font-size:0.82rem;font-weight:600;transition:all .3s var(--ease)}
+.nav__cta:hover{background:var(--green-dark);transform:translateY(-1px);box-shadow:0 6px 20px rgba(46,107,74,0.25)}
+.nav__cta svg{width:15px;height:15px}
+
+/* Mobile */
+.nav__mobile{display:none;flex-direction:column;gap:5px;padding:8px}
+.nav__mobile span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+@media(max-width:960px){
+  .nav__mobile{display:flex}
+  .nav__links{position:fixed;top:0;left:0;right:0;bottom:0;background:var(--canvas);flex-direction:column;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .35s}
+  .nav__links.open{opacity:1;pointer-events:all}
+  .nav__links .nav__link{font-size:1.6rem;color:var(--text)!important}
+}
+
+/* ============================================================
+   HERO — BRIGHT, OPEN, EDITORIAL (vs Deadly's dark cinematic)
+   ============================================================ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;background:var(--canvas)}
+.hero__split{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.hero__text{display:flex;flex-direction:column;justify-content:center;padding:clamp(100px,12vh,140px) clamp(24px,4vw,64px) clamp(60px,8vh,100px);max-width:700px;margin-left:auto}
+.hero__label{display:inline-flex;align-items:center;gap:10px;margin-bottom:28px}
+.hero__label .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.5s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{color:var(--text);margin-bottom:24px}
+.hero h1 em{font-style:italic;color:var(--green);font-weight:500}
+.hero__desc{font-size:clamp(0.95rem,1.2vw,1.1rem);color:var(--text-secondary);max-width:480px;margin-bottom:36px;line-height:1.85}
+.hero__actions{display:flex;gap:14px;flex-wrap:wrap}
+
+.hero__image{position:relative;overflow:hidden}
+.hero__image img{width:100%;height:100%;object-fit:cover;object-position:center;transition:transform 12s var(--ease-smooth)}
+.hero__image:hover img{transform:scale(1.03)}
+/* Green overlay tint — brand signature, NOT dark overlay like Deadly */
+.hero__image::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(46,107,74,0.12) 0%,rgba(31,41,55,0.08) 100%);mix-blend-mode:multiply;pointer-events:none}
+
+@media(max-width:960px){
+  .hero__split{grid-template-columns:1fr;min-height:auto}
+  .hero__text{padding:140px 24px 60px;max-width:none;text-align:center}
+  .hero__desc{margin-left:auto;margin-right:auto}
+  .hero__actions{justify-content:center}
+  .hero__image{height:50vh}
+}
+
+/* ============================================================
+   BUTTONS — green primary (Deadly: gold/ochre primary)
+   ============================================================ */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border-radius:6px;font-size:0.9rem;font-weight:600;transition:all .3s var(--ease);white-space:nowrap}
+.btn svg{width:16px;height:16px;transition:transform .3s}
+.btn:hover svg{transform:translateX(4px)}
+.btn--primary{background:var(--green);color:white}
+.btn--primary:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 10px 28px rgba(46,107,74,0.22)}
+.btn--outline{background:transparent;color:var(--text);border:1.5px solid var(--border-strong)}
+.btn--outline:hover{border-color:var(--text);transform:translateY(-2px)}
+.btn--white{background:white;color:var(--text)}
+.btn--white:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,0.1)}
+.btn--ghost{background:transparent;color:white;border:1.5px solid rgba(255,255,255,0.3)}
+.btn--ghost:hover{border-color:white;background:rgba(255,255,255,0.06)}
+.btn--dark{background:var(--charcoal);color:white}
+.btn--dark:hover{background:var(--charcoal-soft);transform:translateY(-2px)}
+
+/* Arrow icon for links */
+.arrow{width:16px;height:16px;color:var(--green);transition:transform .3s}
+
+/* ============================================================
+   TRUST BAR — horizontal stats on light green band
+   (Deadly: stats in dark charcoal band)
+   ============================================================ */
+.trust{padding:40px 0;background:var(--green);border:none}
+.trust__inner{display:flex;align-items:center;justify-content:center;gap:clamp(28px,5vw,72px);flex-wrap:wrap}
+.trust__item{text-align:center}
+.trust__number{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.8rem);color:white;line-height:1;font-weight:600}
+.trust__desc{font-size:0.68rem;color:rgba(255,255,255,0.65);letter-spacing:0.08em;text-transform:uppercase;font-weight:500;margin-top:4px}
+.trust__divider{width:1px;height:40px;background:rgba(255,255,255,0.15)}
+@media(max-width:600px){.trust__divider{display:none}}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+.section{padding:clamp(60px,10vh,110px) 0}
+.section--warm{background:var(--canvas-warm)}
+.section--dark{background:var(--charcoal);color:var(--text-inverse)}
+.section--green{background:var(--green);color:white}
+
+.section-header{max-width:620px;margin-bottom:56px}
+.section-header.centered{text-align:center;margin-left:auto;margin-right:auto}
+.section-header h2{margin:14px 0 16px}
+.section-header p{color:var(--text-secondary);font-size:1.02rem;line-height:1.8}
+.section--dark .section-header p{color:rgba(250,250,247,0.6)}
+
+/* ============================================================
+   ABOUT — two-column editorial (vs Deadly's cinematic dark)
+   ============================================================ */
+.about__grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+.about__text h2{margin:14px 0 20px}
+.about__text p{color:var(--text-secondary);font-size:1rem;line-height:1.85;margin-bottom:14px}
+.about__image{border-radius:12px;overflow:hidden;aspect-ratio:4/5;position:relative}
+.about__image img{width:100%;height:100%;object-fit:cover}
+/* Subtle green tint instead of dark overlay */
+.about__image::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(46,107,74,0.15));pointer-events:none}
+@media(max-width:900px){.about__grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   VALUES — clean cards with green left border
+   (Deadly: dark bg, ochre top border, image-backed)
+   ============================================================ */
+.values__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.value-card{padding:32px 28px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--green);border-radius:8px;transition:all .35s var(--ease)}
+.value-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,0.06);border-color:var(--green)}
+.value-card__icon{width:44px;height:44px;border-radius:10px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--green)}
+.value-card h4{margin-bottom:8px;font-weight:500}
+.value-card p{color:var(--text-secondary);font-size:0.88rem;line-height:1.75}
+@media(max-width:900px){.values__grid{grid-template-columns:1fr 1fr}}
+@media(max-width:550px){.values__grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   MISSION/VISION — side-by-side panels
+   (Deadly: radial gradient glow dark. Careful: green + white split)
+   ============================================================ */
+.mission__split{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+.mission-panel{padding:clamp(40px,5vw,72px);display:flex;flex-direction:column;justify-content:center}
+.mission-panel--green{background:var(--green);color:white}
+.mission-panel--green .label{color:rgba(255,255,255,0.5)}
+.mission-panel--green h3{color:white}
+.mission-panel--green p{color:rgba(255,255,255,0.75)}
+.mission-panel--light{background:var(--canvas-warm)}
+.mission-panel .label{margin-bottom:14px}
+.mission-panel h3{margin-bottom:14px;font-weight:500;line-height:1.35}
+.mission-panel p{font-size:0.95rem;line-height:1.85}
+@media(max-width:900px){.mission__split{grid-template-columns:1fr}}
+
+/* ============================================================
+   SERVICES — CLEAN EDITORIAL CARDS with image inset
+   (Deadly: full photo-backed dark overlay cards)
+   ============================================================ */
+.services__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .4s var(--ease);display:flex;flex-direction:column}
+.service-card:hover{transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,0.07);border-color:var(--green)}
+.service-card__image{height:220px;overflow:hidden;position:relative}
+.service-card__image img{width:100%;height:100%;object-fit:cover;transition:transform 6s var(--ease-smooth)}
+.service-card:hover .service-card__image img{transform:scale(1.04)}
+.service-card__image::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(46,107,74,0.1));pointer-events:none}
+.service-card__body{padding:28px 28px 32px;flex:1;display:flex;flex-direction:column}
+.service-card__tag{display:inline-flex;align-items:center;width:fit-content;padding:4px 12px;border-radius:99px;font-size:0.65rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:14px}
+.service-card__tag--agri{background:rgba(46,107,74,0.08);color:var(--green);border:1px solid rgba(46,107,74,0.15)}
+.service-card__tag--energy{background:var(--amber-pale);color:var(--amber);border:1px solid rgba(196,134,42,0.15)}
+.service-card__tag--mining{background:rgba(107,114,128,0.08);color:var(--slate);border:1px solid rgba(107,114,128,0.15)}
+.service-card__tag--land{background:rgba(46,107,74,0.08);color:var(--green);border:1px solid rgba(46,107,74,0.15)}
+.service-card h3{margin-bottom:10px;font-weight:500}
+.service-card p{color:var(--text-secondary);font-size:0.9rem;line-height:1.75;margin-bottom:18px;flex:1}
+.service-card__features{list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.service-card__features li{font-size:0.75rem;color:var(--text-secondary);padding:4px 12px;border-radius:99px;background:var(--canvas-warm);border:1px solid var(--border)}
+@media(max-width:900px){.services__grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   PHOTO STRIP — full-width image with green overlay text
+   (Deadly: dark overlay 0.38 brightness. Careful: green-tinted, brighter)
+   ============================================================ */
+.photo-strip{position:relative;height:clamp(280px,40vh,480px);overflow:hidden}
+.photo-strip img{width:100%;height:100%;object-fit:cover;filter:brightness(0.65)contrast(1.05)}
+.photo-strip__content{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;z-index:2;padding:40px}
+.photo-strip__content::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(46,107,74,0.35),rgba(31,41,55,0.45));z-index:-1}
+.photo-strip h2{color:white;max-width:600px;text-shadow:0 2px 20px rgba(0,0,0,0.2)}
+.photo-strip p{color:rgba(255,255,255,0.85);max-width:440px;margin:12px auto 0;font-size:1rem}
+
+/* ============================================================
+   INDUSTRIES — clean grid on charcoal (not warm-black like Deadly)
+   ============================================================ */
+.industries__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+.industry-card{padding:32px 20px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;text-align:center;transition:all .3s var(--ease)}
+.industry-card:hover{background:rgba(255,255,255,0.07);border-color:rgba(255,255,255,0.15);transform:translateY(-3px)}
+.industry-card svg{width:32px;height:32px;margin:0 auto 14px;color:var(--green-light)}
+.industry-card h4{font-size:1rem;color:white;margin-bottom:4px;font-weight:500}
+.industry-card p{font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.6}
+@media(max-width:900px){.industries__grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.industries__grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   APPROACH — editorial steps
+   ============================================================ */
+.approach__grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.approach__image{border-radius:12px;overflow:hidden;aspect-ratio:4/3}
+.approach__image img{width:100%;height:100%;object-fit:cover}
+.step{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step__num{width:40px;height:40px;border-radius:50%;background:var(--green-pale);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;color:var(--green);flex-shrink:0;font-weight:600}
+.step__body h4{margin-bottom:6px;font-weight:500}
+.step__body p{color:var(--text-secondary);font-size:0.9rem;line-height:1.75}
+@media(max-width:900px){.approach__grid{grid-template-columns:1fr;gap:40px}}
+
+/* ============================================================
+   TESTIMONIAL — green bg strip (Deadly: dark bg with image)
+   ============================================================ */
+.quote{padding:clamp(60px,8vh,100px) 0;background:var(--green);position:relative;overflow:hidden}
+.quote .container{position:relative;z-index:2;text-align:center;max-width:760px}
+.quote__mark{font-family:var(--font-display);font-size:4.5rem;color:rgba(255,255,255,0.15);line-height:1}
+.quote__text{font-family:var(--font-display);font-size:clamp(1.3rem,2.2vw,2rem);font-style:italic;line-height:1.5;color:white;margin:-1rem 0 28px;font-weight:400}
+.quote__name{font-weight:600;color:rgba(255,255,255,0.9);font-size:0.9rem}
+.quote__role{font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:2px}
+
+/* ============================================================
+   GRANTS
+   ============================================================ */
+.grants__header{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px;margin-bottom:48px}
+.grants__header-text{max-width:600px}
+.grants__header-text h2{margin:14px 0 14px}
+.grants__header-text p{color:var(--text-secondary);font-size:0.98rem}
+.grants__live{display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:99px;background:var(--green-pale);border:1px solid rgba(46,107,74,0.12)}
+.grants__live-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s ease-in-out infinite}
+.grants__live-text{font-size:0.75rem;font-weight:600;color:var(--green);letter-spacing:0.05em}
+.grants__live-date{font-size:0.7rem;color:var(--text-muted);margin-left:4px}
+.grants__filters{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
+.grants__filter{padding:7px 16px;border-radius:99px;font-size:0.76rem;font-weight:600;border:1px solid var(--border);background:white;color:var(--text-secondary);cursor:pointer;transition:all .25s}
+.grants__filter:hover,.grants__filter.active{background:var(--green);color:white;border-color:var(--green)}
+.grants__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:18px}
+.grant-card{background:white;border:1px solid var(--border);border-radius:12px;padding:24px;transition:all .35s var(--ease);display:flex;flex-direction:column}
+.grant-card:hover{transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,0.06);border-color:var(--green)}
+.grant-card__top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+.grant-card__status{padding:3px 10px;border-radius:99px;font-size:0.62rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;flex-shrink:0}
+.grant-card__status--open{background:var(--green-pale);color:var(--green);border:1px solid rgba(46,107,74,0.15)}
+.grant-card__status--closing{background:var(--amber-pale);color:var(--amber);border:1px solid rgba(196,134,42,0.15)}
+.grant-card__status--new{background:rgba(59,130,246,0.08);color:#3B82F6;border:1px solid rgba(59,130,246,0.15)}
+.grant-card__source{font-size:0.65rem;color:var(--text-muted);font-weight:600;letter-spacing:0.05em;text-transform:uppercase}
+.grant-card h4{font-size:1.05rem;margin-bottom:8px;line-height:1.3;font-weight:500}
+.grant-card__desc{color:var(--text-secondary);font-size:0.85rem;line-height:1.7;margin-bottom:14px;flex:1}
+.grant-card__meta{display:flex;flex-wrap:wrap;gap:12px;padding-top:14px;border-top:1px solid var(--border);font-size:0.76rem;color:var(--text-muted)}
+.grant-card__meta-item{display:flex;align-items:center;gap:4px}
+.grant-card__meta-item svg{width:13px;height:13px;color:var(--green)}
+.grant-card__tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
+.grant-card__tag{padding:2px 9px;border-radius:99px;font-size:0.65rem;background:var(--canvas-warm);color:var(--text-secondary);font-weight:500}
+.grant-card__link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:0.82rem;font-weight:600;color:var(--green);transition:gap .2s}
+.grant-card__link:hover{gap:10px}
+.grant-card__link svg{width:14px;height:14px}
+.grants__info{margin-top:36px;padding:20px 28px;border-radius:10px;background:var(--green-pale);border:1px solid rgba(46,107,74,0.1);display:flex;gap:14px;align-items:flex-start}
+.grants__info svg{width:22px;height:22px;color:var(--green);flex-shrink:0;margin-top:2px}
+.grants__info p{font-size:0.85rem;color:var(--text-secondary);line-height:1.7}
+.grants__info strong{color:var(--text)}
+@media(max-width:500px){.grants__grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta{padding:clamp(60px,8vh,100px) 0;background:var(--charcoal)}
+.cta__inner{text-align:center;max-width:620px;margin:0 auto}
+.cta__inner .label{color:var(--green-light)}
+.cta__inner h2{color:white;margin:14px 0 18px}
+.cta__inner p{color:rgba(255,255,255,0.65);font-size:1rem;margin-bottom:32px;line-height:1.85}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact__grid{display:grid;grid-template-columns:1fr 1fr;gap:72px}
+.contact__info h2{margin:14px 0 18px}
+.contact__info>p{color:var(--text-secondary);font-size:1rem;margin-bottom:36px;line-height:1.8}
+.contact__details{display:flex;flex-direction:column;gap:20px}
+.contact__detail{display:flex;gap:14px;align-items:flex-start}
+.contact__detail-icon{width:40px;height:40px;border-radius:10px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;color:var(--green);flex-shrink:0}
+.contact__detail-icon svg{width:18px;height:18px}
+.contact__detail-text strong{display:block;font-size:0.8rem;margin-bottom:1px}
+.contact__detail-text span{color:var(--text-secondary);font-size:0.9rem}
+.contact__form{background:white;padding:clamp(28px,4vw,44px);border-radius:14px;border:1px solid var(--border)}
+.form__group{margin-bottom:18px}
+.form__label{display:block;font-size:0.8rem;font-weight:600;margin-bottom:6px}
+.form__input,.form__select,.form__textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:6px;font-family:var(--font-body);font-size:0.9rem;color:var(--text);background:var(--canvas);transition:all .2s;outline:none}
+.form__input:focus,.form__select:focus,.form__textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px var(--green-pale)}
+.form__textarea{min-height:110px;resize:vertical}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:900px){.contact__grid{grid-template-columns:1fr}}
+@media(max-width:500px){.form__row{grid-template-columns:1fr}}
+
+/* ============================================================
+   FOOTER — clean charcoal (Deadly: warm black with ochre)
+   ============================================================ */
+.footer{background:var(--charcoal);color:var(--text-inverse);padding:72px 0 28px}
+.footer__grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer__brand p{color:rgba(250,250,247,0.45);font-size:0.85rem;line-height:1.75;margin-top:14px;max-width:280px}
+.footer__col h5{font-family:var(--font-body);font-size:0.65rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,250,247,0.25);margin-bottom:18px}
+.footer__col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer__col a{font-size:0.85rem;color:rgba(250,250,247,0.55);transition:color .2s}
+.footer__col a:hover{color:var(--green-light)}
+.footer__bottom{padding-top:28px;border-top:1px solid rgba(255,255,255,0.06);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:14px}
+.footer__ack{font-size:0.75rem;color:rgba(250,250,247,0.35);max-width:600px;line-height:1.7;font-style:italic}
+.footer__bottom>p{font-size:0.72rem;color:rgba(250,250,247,0.25)}
+@media(max-width:900px){.footer__grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.footer__grid{grid-template-columns:1fr}}
+
+/* ============================================================
+   ANIMATIONS — restrained (no particles, no Ken Burns)
+   ============================================================ */
+.anim{opacity:0;transform:translateY(32px);transition:opacity var(--speed-slow) var(--ease),transform var(--speed-slow) var(--ease)}
+.anim.visible{opacity:1;transform:translateY(0)}
+.anim-d1{transition-delay:.1s}.anim-d2{transition-delay:.2s}.anim-d3{transition-delay:.3s}.anim-d4{transition-delay:.4s}
+@media(prefers-reduced-motion:reduce){.anim{opacity:1;transform:none;transition:none}}
+
+/* ============================================================
+   CHATBOT — green themed (Deadly doesn't have one)
+   ============================================================ */
+.chat-fab{position:fixed;bottom:24px;right:24px;z-index:200;width:60px;height:60px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(46,107,74,0.35);transition:all .3s var(--ease)}
+.chat-fab:hover{transform:scale(1.06);box-shadow:0 12px 36px rgba(46,107,74,0.45)}
+.chat-fab svg{width:26px;height:26px;transition:transform .3s}
+.chat-fab.open svg{transform:rotate(45deg)}
+.chat-panel{position:fixed;bottom:96px;right:24px;z-index:199;width:380px;max-width:calc(100vw - 40px);height:540px;max-height:calc(100vh - 130px);background:white;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.15);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(0.96);pointer-events:none;transition:all .35s var(--ease)}
+.chat-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+.chat-header{background:var(--charcoal);padding:18px 20px;display:flex;align-items:center;gap:12px}
+.chat-header__avatar{width:36px;height:36px;border-radius:50%;background:rgba(46,107,74,0.25);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chat-header__avatar svg{width:20px;height:20px;color:var(--green-light)}
+.chat-header__info h4{color:white;font-size:0.9rem;font-family:var(--font-display);font-weight:500}
+.chat-header__info p{color:rgba(255,255,255,0.4);font-size:0.68rem}
+.chat-header__lang{margin-left:auto;padding:3px 10px;border-radius:99px;font-size:0.6rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-light);border:1px solid rgba(74,138,102,0.25);background:rgba(74,138,102,0.08);cursor:pointer;transition:all .2s}
+.chat-header__lang:hover{background:rgba(74,138,102,0.15)}
+.chat-messages{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:10px;background:var(--canvas)}
+.chat-messages::-webkit-scrollbar{width:3px}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:0.85rem;line-height:1.65;animation:msgIn .35s var(--ease)}
+@keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg--bot{background:white;border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:4px}
+.chat-msg--user{background:var(--green);color:white;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-msg__lang{display:block;font-size:0.73rem;color:var(--green);font-style:italic;margin-bottom:4px;font-weight:500}
+.chat-msg__translation{display:block;font-size:0.73rem;color:var(--text-muted);margin-top:5px;padding-top:5px;border-top:1px solid var(--border);font-style:italic}
+.chat-suggestions{display:flex;flex-wrap:wrap;gap:6px;padding:0 18px 10px;background:var(--canvas)}
+.chat-suggestion{padding:5px 12px;border-radius:99px;font-size:0.75rem;border:1px solid var(--border);background:white;color:var(--text-secondary);cursor:pointer;transition:all .2s}
+.chat-suggestion:hover{border-color:var(--green);color:var(--green)}
+.chat-input{display:flex;gap:8px;padding:14px 18px;border-top:1px solid var(--border);background:white}
+.chat-input input{flex:1;border:none;outline:none;font-family:var(--font-body);font-size:0.85rem;color:var(--text);background:transparent}
+.chat-input input::placeholder{color:var(--text-muted)}
+.chat-input button{width:34px;height:34px;border-radius:50%;background:var(--green);color:white;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.chat-input button:hover{background:var(--green-dark)}
+.chat-input button svg{width:14px;height:14px}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#" class="nav__logo">
+      <!-- Logo mark — geometric diamond/land shape, NOT concentric circles -->
+      <svg class="nav__logo-mark" viewBox="0 0 40 40" fill="none">
+        <!-- Stylised land/diamond form with dot pattern — unique to Careful Country -->
+        <path d="M20 2L38 20L20 38L2 20Z" stroke="#2E6B4A" stroke-width="1.5" fill="none" opacity="0.3"/>
+        <path d="M20 8L32 20L20 32L8 20Z" stroke="#2E6B4A" stroke-width="1.5" fill="none" opacity="0.5"/>
+        <path d="M20 14L26 20L20 26L14 20Z" stroke="#2E6B4A" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <circle cx="20" cy="20" r="2.5" fill="#2E6B4A"/>
+        <!-- Cardinal dots -->
+        <circle cx="20" cy="2" r="1.5" fill="#C4862A"/>
+        <circle cx="38" cy="20" r="1.5" fill="#C4862A"/>
+        <circle cx="20" cy="38" r="1.5" fill="#C4862A"/>
+        <circle cx="2" cy="20" r="1.5" fill="#C4862A"/>
+      </svg>
+      <div class="nav__logo-text">
+        <div class="nav__logo-name">Careful Country</div>
+        <div class="nav__logo-tagline">Indigenous Commercial Advisory</div>
+      </div>
+    </a>
+    <ul class="nav__links" id="navLinks">
+      <li><a href="#about" class="nav__link">About</a></li>
+      <li><a href="#services" class="nav__link">Services</a></li>
+      <li><a href="#industries" class="nav__link">Industries</a></li>
+      <li><a href="#approach" class="nav__link">Approach</a></li>
+      <li><a href="#contact" class="nav__link">Contact</a></li>
+      <li><a href="#contact" class="nav__cta">Book a Consultation <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a></li>
+    </ul>
+    <button class="nav__mobile" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ============ HERO — SPLIT LAYOUT (vs Deadly's full-bleed dark) ============ -->
+<section class="hero" id="hero">
+  <div class="hero__split">
+    <div class="hero__text">
+      <div class="hero__label"><div class="dot"></div><span class="label">100% Aboriginal Owned</span></div>
+      <h1>Walking <em>Carefully</em> on Country. Building Strong Business.</h1>
+      <p class="hero__desc">We partner with Indigenous communities and enterprise across Australia to secure the strongest commercial outcomes in tendering, procurement, and business development.</p>
+      <div class="hero__actions">
+        <a href="#contact" class="btn btn--primary">Book a Consultation <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+        <a href="#services" class="btn btn--outline">Our Services</a>
+      </div>
+    </div>
+    <div class="hero__image">
+      <img src="https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1600&q=90&auto=format" alt="Australian bushland with sunlight through eucalyptus trees">
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR — GREEN (vs Deadly's dark) ============ -->
+<section class="trust">
+  <div class="container trust__inner">
+    <div class="trust__item"><div class="trust__number" data-target="100" data-suffix="%">0%</div><div class="trust__desc">Aboriginal Owned</div></div>
+    <div class="trust__divider"></div>
+    <div class="trust__item"><div class="trust__number" data-target="4">0</div><div class="trust__desc">Core Sectors</div></div>
+    <div class="trust__divider"></div>
+    <div class="trust__item"><div class="trust__number" data-target="1">0</div><div class="trust__desc">Melbourne Office</div></div>
+    <div class="trust__divider"></div>
+    <div class="trust__item"><div class="trust__number" data-target="1">0</div><div class="trust__desc">Business Day Response</div></div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about">
+  <div class="container about__grid">
+    <div class="about__text anim">
+      <span class="label">Who We Are</span>
+      <h2>Country Comes First. Then We Get to Work.</h2>
+      <p>Careful Country is a 100% Aboriginal-owned commercial advisory that brings together deep cultural knowledge and sharp commercial acumen. We exist because too many Indigenous communities and businesses leave value on the table — not from lack of capability, but from lack of the right partner at the table.</p>
+      <p>We work shoulder to shoulder with Traditional Owner groups, Indigenous businesses, and corporate partners across Australia to ensure every tender, every negotiation, and every business development opportunity delivers the strongest possible commercial outcome.</p>
+      <a href="#services" class="btn btn--outline" style="margin-top:20px">Our Services <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+    </div>
+    <div class="about__image anim anim-d2">
+      <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1000&q=85&auto=format" alt="Business professionals in collaborative discussion">
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUES ============ -->
+<section class="section section--warm">
+  <div class="container">
+    <div class="section-header centered anim">
+      <span class="label">Our Values</span>
+      <h2>What Guides Every Engagement</h2>
+      <p>Four principles that shape how we work — from the first conversation to the final contract.</p>
+    </div>
+    <div class="values__grid">
+      <div class="value-card anim"><div class="value-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h4>Deep Respect</h4><p>Every engagement begins with listening — for Country, community, and the knowledge systems that have sustained this land for 65,000 years.</p></div>
+      <div class="value-card anim anim-d1"><div class="value-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h4>Commercial Rigour</h4><p>We bring boardroom-grade strategy, tender writing, and negotiation expertise to every opportunity we touch.</p></div>
+      <div class="value-card anim anim-d2"><div class="value-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>Shared Prosperity</h4><p>When Indigenous communities thrive commercially, everyone benefits. We build partnerships that create lasting value.</p></div>
+      <div class="value-card anim anim-d3"><div class="value-card__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h4>Sovereign Capability</h4><p>We build capacity, not dependency. Every engagement strengthens your ability to win independently.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MISSION / VISION — GREEN + LIGHT SPLIT ============ -->
+<div class="mission__split">
+  <div class="mission-panel mission-panel--green">
+    <span class="label">Our Mission</span>
+    <h3>To ensure Indigenous businesses and communities secure the strongest commercial outcomes in every opportunity.</h3>
+    <p>We combine cultural authority with commercial excellence — bringing together the knowledge of Country with the precision of modern business strategy.</p>
+  </div>
+  <div class="mission-panel mission-panel--light">
+    <span class="label">Our Vision</span>
+    <h3>An Australia where Indigenous enterprise leads in every sector — from the boardroom to the bush.</h3>
+    <p>Aboriginal and Torres Strait Islander businesses as the preferred partners across agriculture, energy, mining, and land management — because they deliver the best results.</p>
+  </div>
+</div>
+
+<!-- ============ PHOTO STRIP ============ -->
+<div class="photo-strip">
+  <img src="https://images.unsplash.com/photo-1578496479914-7ef3b0193be3?w=2400&q=85&auto=format" alt="Aerial view of mining operations in Australia">
+  <div class="photo-strip__content">
+    <h2>Commercial Excellence Across Australia</h2>
+    <p>Agriculture, energy, mining, and native title land utilisation.</p>
+  </div>
+</div>
+
+<!-- ============ SERVICES — CLEAN EDITORIAL CARDS ============ -->
+<section class="section" id="services">
+  <div class="container">
+    <div class="section-header centered anim">
+      <span class="label">What We Do</span>
+      <h2>Services Built for Country, Engineered for Commerce</h2>
+      <p>Four core sectors where Indigenous enterprise and land rights intersect with major commercial opportunity.</p>
+    </div>
+    <div class="services__grid">
+      <div class="service-card anim">
+        <div class="service-card__image"><img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=85&auto=format" alt="Australian pastoral farmland"></div>
+        <div class="service-card__body">
+          <div class="service-card__tag service-card__tag--agri">Agriculture</div>
+          <h3>Pastoral &amp; Agribusiness</h3>
+          <p>Supporting Indigenous pastoral operations, agribusiness joint ventures, and land management enterprises to compete for and win agricultural contracts across Australia.</p>
+          <ul class="service-card__features"><li>Pastoral lease tendering</li><li>Carbon farming</li><li>JV structuring</li><li>Supply chain</li></ul>
+        </div>
+      </div>
+      <div class="service-card anim anim-d1">
+        <div class="service-card__image"><img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=85&auto=format" alt="Solar panel array in Australian landscape"></div>
+        <div class="service-card__body">
+          <div class="service-card__tag service-card__tag--energy">Energy</div>
+          <h3>Energy &amp; Renewables</h3>
+          <p>Positioning Indigenous enterprises as key partners in Australia's energy transition — from renewable projects on Aboriginal land to traditional energy participation.</p>
+          <ul class="service-card__features"><li>Land-use agreements</li><li>Energy tenders</li><li>Benefit-sharing</li><li>Clean energy JVs</li></ul>
+        </div>
+      </div>
+      <div class="service-card anim">
+        <div class="service-card__image"><img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&q=85&auto=format" alt="Mining operation in Australia"></div>
+        <div class="service-card__body">
+          <div class="service-card__tag service-card__tag--mining">Mining</div>
+          <h3>Resources &amp; Mining</h3>
+          <p>Ensuring Traditional Owners and Indigenous businesses secure maximum value from mining agreements, service contracts, and procurement opportunities.</p>
+          <ul class="service-card__features"><li>Agreement review</li><li>Indigenous procurement</li><li>Service tenders</li><li>Royalty analysis</li></ul>
+        </div>
+      </div>
+      <div class="service-card anim anim-d1">
+        <div class="service-card__image"><img src="https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?w=800&q=85&auto=format" alt="Australian red earth landscape"></div>
+        <div class="service-card__body">
+          <div class="service-card__tag service-card__tag--land">Native Title &amp; Land</div>
+          <h3>Native Title &amp; Land Utilisation</h3>
+          <p>Maximising the commercial potential of native title determinations and Indigenous land holdings through strategic planning and partnerships.</p>
+          <ul class="service-card__features"><li>ILUA strategy</li><li>Development proposals</li><li>TO commercial planning</li><li>Heritage economics</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INDUSTRIES (DARK) ============ -->
+<section class="section section--dark" id="industries">
+  <div class="container">
+    <div class="section-header centered anim">
+      <span class="label--light">Industries</span>
+      <h2 style="color:white">Working Across Australia's Key Sectors</h2>
+      <p style="color:rgba(250,250,247,0.55)">From the Pilbara to the Kimberley — delivering commercial outcomes wherever Country meets commerce.</p>
+    </div>
+    <div class="industries__grid">
+      <div class="industry-card anim"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 4v8M12 8l4 6M28 8l-4 6M8 20h24M12 32l4-6M28 32l-4-6M20 36v-8"/><circle cx="20" cy="20" r="4"/></svg><h4>Resources</h4><p>Iron ore, gold, lithium, rare earths</p></div>
+      <div class="industry-card anim anim-d1"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="14" r="6"/><path d="M14 14h12M20 8v12M6 32h28M10 32v-6h6v6M24 32v-8h6v8"/></svg><h4>Renewables</h4><p>Solar, wind, hydrogen, carbon</p></div>
+      <div class="industry-card anim anim-d2"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 34h28M10 34V18l10-8 10 8v16M16 34v-8h8v8M16 20h8M16 24h8"/></svg><h4>Government</h4><p>Federal, state, local procurement</p></div>
+      <div class="industry-card anim anim-d3"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 6c-8 0-14 6-14 14 0 6 14 16 14 16s14-10 14-16c0-8-6-14-14-14z"/><circle cx="20" cy="19" r="5"/></svg><h4>Land Management</h4><p>Pastoral, conservation, tourism</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHOTO STRIP 2 ============ -->
+<div class="photo-strip">
+  <img src="https://images.unsplash.com/photo-1521790797524-b2497295b8a0?w=2400&q=85&auto=format" alt="Business strategy meeting">
+  <div class="photo-strip__content">
+    <h2>Partnership That Delivers</h2>
+    <p>Commercial rigour meets cultural authority in every engagement.</p>
+  </div>
+</div>
+
+<!-- ============ APPROACH ============ -->
+<section class="section section--warm" id="approach">
+  <div class="container">
+    <div class="section-header centered anim">
+      <span class="label">Our Approach</span>
+      <h2>How We Work With You</h2>
+      <p>Every engagement follows our proven four-step methodology.</p>
+    </div>
+    <div class="approach__grid">
+      <div class="approach__image anim">
+        <img src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=1000&q=85&auto=format" alt="Sunlight through Australian eucalyptus canopy">
+      </div>
+      <div>
+        <div class="step anim"><div class="step__num">1</div><div class="step__body"><h4>Listen &amp; Understand</h4><p>We begin by understanding your community, your Country, your commercial aspirations. No assumptions — just deep, respectful listening.</p></div></div>
+        <div class="step anim anim-d1"><div class="step__num">2</div><div class="step__body"><h4>Strategise &amp; Position</h4><p>We analyse the competitive landscape, identify your strongest value propositions, and develop a tailored strategy.</p></div></div>
+        <div class="step anim anim-d2"><div class="step__num">3</div><div class="step__body"><h4>Deliver &amp; Win</h4><p>We prepare compelling tenders, proposals, and business cases with the rigour and narrative strength that wins contracts.</p></div></div>
+        <div class="step anim anim-d3"><div class="step__num">4</div><div class="step__body"><h4>Grow &amp; Strengthen</h4><p>We help you build on each win — growing your capability and strengthening your commercial position over time.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE — GREEN BG (vs Deadly's dark image bg) ============ -->
+<section class="quote">
+  <div class="container">
+    <div class="quote__mark">"</div>
+    <blockquote class="quote__text">The best commercial outcomes come when you walk carefully on Country — understanding the land, respecting the people, and bringing the right expertise to the table.</blockquote>
+    <div class="quote__name">Careful Country</div>
+    <div class="quote__role">Founding Principle</div>
+  </div>
+</section>
+
+<!-- ============ GRANTS ============ -->
+<section class="section" id="grants">
+  <div class="container">
+    <div class="grants__header anim">
+      <div class="grants__header-text">
+        <span class="label">Opportunities</span>
+        <h2>Government Grants &amp; Procurement</h2>
+        <p>Live directory of current grants, procurement incentives, and funding opportunities for Indigenous businesses across Australia.</p>
+      </div>
+      <div class="grants__live"><div class="grants__live-dot"></div><span class="grants__live-text">Live</span><span class="grants__live-date" id="grantsDate"></span></div>
+    </div>
+    <div class="grants__filters anim">
+      <button class="grants__filter active" data-filter="all">All</button>
+      <button class="grants__filter" data-filter="procurement">Procurement</button>
+      <button class="grants__filter" data-filter="grant">Grants</button>
+      <button class="grants__filter" data-filter="agriculture">Agriculture</button>
+      <button class="grants__filter" data-filter="energy">Energy</button>
+      <button class="grants__filter" data-filter="mining">Mining</button>
+      <button class="grants__filter" data-filter="land">Land</button>
+    </div>
+    <div class="grants__grid" id="grantsGrid"></div>
+    <div class="grants__info anim">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <p><strong>Updated daily.</strong> Only current, open opportunities are shown. Need help applying? <a href="#contact" style="color:var(--green);font-weight:600">Book a consultation</a> — our team can prepare your submission.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
+  <div class="container">
+    <div class="cta__inner anim">
+      <span class="label">Ready to Start?</span>
+      <h2>Let's Secure Your Next Opportunity</h2>
+      <p>Whether you're a Traditional Owner group, an Indigenous business, or a corporate partner seeking genuine engagement — we're ready to help.</p>
+      <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <a href="#contact" class="btn btn--primary">Book a Consultation <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>
+        <a href="#contact" class="btn btn--ghost">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section" id="contact">
+  <div class="container contact__grid">
+    <div class="contact__info anim">
+      <span class="label">Get in Touch</span>
+      <h2>Book a Consultation</h2>
+      <p>Tell us about your opportunity and we'll be in touch within one business day.</p>
+      <div class="contact__details">
+        <div class="contact__detail"><div class="contact__detail-icon"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M10 1C6 1 2 5 2 9c0 6 8 11 8 11s8-5 8-11c0-4-4-8-8-8z"/><circle cx="10" cy="9" r="2.5"/></svg></div><div class="contact__detail-text"><strong>Office</strong><span>Melbourne, Victoria</span></div></div>
+      </div>
+    </div>
+    <form class="contact__form anim anim-d2" onsubmit="event.preventDefault();alert('Thank you. We will be in touch within one business day.');">
+      <div class="form__row"><div class="form__group"><label class="form__label" for="fn">First Name</label><input class="form__input" type="text" id="fn" required></div><div class="form__group"><label class="form__label" for="ln">Last Name</label><input class="form__input" type="text" id="ln" required></div></div>
+      <div class="form__row"><div class="form__group"><label class="form__label" for="em">Email</label><input class="form__input" type="email" id="em" required></div><div class="form__group"><label class="form__label" for="ph">Phone</label><input class="form__input" type="tel" id="ph"></div></div>
+      <div class="form__group"><label class="form__label" for="org">Organisation</label><input class="form__input" type="text" id="org"></div>
+      <div class="form__group"><label class="form__label" for="sec">Sector</label><select class="form__select" id="sec"><option value="">Select...</option><option>Agriculture</option><option>Energy</option><option>Mining</option><option>Native Title &amp; Land</option><option>Multiple</option><option>Other</option></select></div>
+      <div class="form__group"><label class="form__label" for="msg">Your Opportunity</label><textarea class="form__textarea" id="msg" placeholder="Describe the opportunity, tender, or project..."></textarea></div>
+      <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center">Book a Consultation <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 10h10M11 6l4 4-4 4"/></svg></button>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#" class="nav__logo">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none"><path d="M20 2L38 20L20 38L2 20Z" stroke="#4A8A66" stroke-width="1.5" fill="none" opacity="0.3"/><path d="M20 8L32 20L20 32L8 20Z" stroke="#4A8A66" stroke-width="1.5" fill="none" opacity="0.5"/><path d="M20 14L26 20L20 26L14 20Z" stroke="#4A8A66" stroke-width="1.5" fill="none" opacity="0.7"/><circle cx="20" cy="20" r="2.5" fill="#4A8A66"/><circle cx="20" cy="2" r="1.5" fill="#DCA648"/><circle cx="38" cy="20" r="1.5" fill="#DCA648"/><circle cx="20" cy="38" r="1.5" fill="#DCA648"/><circle cx="2" cy="20" r="1.5" fill="#DCA648"/></svg>
+          <div class="nav__logo-text"><div class="nav__logo-name" style="color:white">Careful Country</div><div class="nav__logo-tagline">Indigenous Commercial Advisory</div></div>
+        </a>
+        <p>Walking carefully on Country, building strong business. We partner with Indigenous communities across Australia to secure the best commercial outcomes.</p>
+      </div>
+      <div class="footer__col"><h5>Services</h5><ul><li><a href="#services">Agriculture</a></li><li><a href="#services">Energy</a></li><li><a href="#services">Mining</a></li><li><a href="#services">Native Title</a></li></ul></div>
+      <div class="footer__col"><h5>Company</h5><ul><li><a href="#about">About</a></li><li><a href="#approach">Approach</a></li><li><a href="#grants">Grants</a></li><li><a href="#contact">Contact</a></li></ul></div>
+      <div class="footer__col"><h5>Connect</h5><ul><li><a href="#">LinkedIn</a></li><li><a href="#">Supply Nation</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__ack">Careful Country acknowledges the Traditional Custodians of the lands on which we work and live. We pay our respects to Elders past, present and emerging. Sovereignty was never ceded.</p>
+      <p>&copy; 2026 Careful Country Pty Ltd</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CHATBOT ============ -->
+<button class="chat-fab" id="chatFab" aria-label="Chat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-header__avatar"><svg viewBox="0 0 40 40" fill="none"><path d="M20 8L32 20L20 32L8 20Z" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.6"/><circle cx="20" cy="20" r="3" fill="currentColor"/></svg></div>
+    <div class="chat-header__info"><h4>Careful Country</h4><p>Yarn with us</p></div>
+    <button class="chat-header__lang" id="langToggle">Bilingual</button>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-suggestions" id="chatSuggestions">
+    <button class="chat-suggestion" data-q="What services do you offer?">Services</button>
+    <button class="chat-suggestion" data-q="Tell me about mining">Mining</button>
+    <button class="chat-suggestion" data-q="How do I book a consultation?">Book a yarn</button>
+    <button class="chat-suggestion" data-q="What industries do you work in?">Industries</button>
+  </div>
+  <div class="chat-input"><input type="text" id="chatInput" placeholder="Type your message..."><button id="chatSend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+</div>
+
+<script>
+// === NAV ===
+const nav=document.getElementById('nav'),navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+navToggle.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-nav.offsetHeight-16,behavior:'smooth'})})});
+
+// === ANIMATIONS ===
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{rootMargin:'0px 0px -40px',threshold:0.1});
+document.querySelectorAll('.anim').forEach(el=>obs.observe(el));
+
+// === COUNTERS ===
+function animateCounters(){document.querySelectorAll('.trust__number').forEach(el=>{const t=parseInt(el.dataset.target),p=el.dataset.prefix||'',s=el.dataset.suffix||'';let c=0;const inc=t/30;el.textContent=p+'0'+s;const timer=setInterval(()=>{c+=inc;if(c>=t){c=t;clearInterval(timer)}el.textContent=p+Math.round(c)+s},40)})}
+const tObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCounters();tObs.unobserve(e.target)}})},{threshold:0.3});
+document.querySelector('.trust')&&tObs.observe(document.querySelector('.trust'));
+
+// === CHATBOT ===
+const chatFab=document.getElementById('chatFab'),chatPanel=document.getElementById('chatPanel'),chatMessages=document.getElementById('chatMessages'),chatInput=document.getElementById('chatInput'),chatSend=document.getElementById('chatSend'),chatSuggestions=document.getElementById('chatSuggestions'),langToggle=document.getElementById('langToggle');
+let bilingualMode=true,chatOpen=false,welcomed=false;
+const lang={greeting:{aboriginal:"Yaama! Ngayini Careful Country.",translation:"Hello! We are Careful Country.",language:"Gamilaraay / Pitjantjatjara"},welcome:{aboriginal:"Yuwayi, palya. Ngapartji ngapartji.",translation:"Yes, good. Reciprocity.",language:"Pitjantjatjara"},thanks:{aboriginal:"Yawa. Palya.",translation:"Thank you. Good.",language:"Pitjantjatjara"},listen:{aboriginal:"Kulini — we listen first.",translation:"To listen, understand.",language:"Pitjantjatjara"}};
+const responses={services:{text:"We consult across <strong>Agriculture</strong>, <strong>Energy</strong>, <strong>Mining</strong>, and <strong>Native Title & Land</strong> — covering tender preparation, negotiation strategy, benefit-sharing frameworks, and commercial planning.",aboriginal:lang.listen},mining:{text:"Our mining practice covers agreement negotiation, Indigenous procurement strategy, service contract tenders, and royalty analysis — ensuring Traditional Owners secure maximum value.",aboriginal:{aboriginal:"Ngura — Country.",translation:"Country/Land.",language:"Pitjantjatjara"}},book:{text:"Use the contact form on our website to get in touch. We respond within one business day.",aboriginal:lang.welcome},industries:{text:"We cover <strong>Resources</strong>, <strong>Renewables</strong>, <strong>Government procurement</strong>, and <strong>Land Management</strong> — Australia-wide.",aboriginal:lang.welcome},default:{text:"For specific enquiries, use the contact form and we'll be in touch.",aboriginal:lang.thanks}};
+function match(q){q=q.toLowerCase();if(q.match(/servic|offer|help/))return responses.services;if(q.match(/min|resource|iron|gold/))return responses.mining;if(q.match(/book|consult|contact|yarn|meet/))return responses.book;if(q.match(/industr|sector|where/))return responses.industries;return responses.default}
+function addMsg(html,isUser,ld){const d=document.createElement('div');d.className='chat-msg '+(isUser?'chat-msg--user':'chat-msg--bot');let c='';if(!isUser&&bilingualMode&&ld)c+=`<span class="chat-msg__lang">${ld.aboriginal}</span>`;c+=html;if(!isUser&&bilingualMode&&ld&&ld.translation)c+=`<span class="chat-msg__translation">${ld.language}: "${ld.translation}"</span>`;d.innerHTML=c;chatMessages.appendChild(d);chatMessages.scrollTop=chatMessages.scrollHeight}
+function showWelcome(){if(welcomed)return;welcomed=true;setTimeout(()=>addMsg("Welcome to Careful Country. Ask about our services, industries, or how to book a consultation.",false,lang.greeting),350)}
+function handleSend(){const v=chatInput.value.trim();if(!v)return;addMsg(v,true);chatInput.value='';chatSuggestions.style.display='none';setTimeout(()=>{const r=match(v);addMsg(r.text,false,r.aboriginal)},500+Math.random()*300)}
+chatFab.addEventListener('click',()=>{chatOpen=!chatOpen;chatPanel.classList.toggle('open',chatOpen);chatFab.classList.toggle('open',chatOpen);if(chatOpen){showWelcome();chatInput.focus()}});
+chatSend.addEventListener('click',handleSend);
+chatInput.addEventListener('keydown',e=>{if(e.key==='Enter')handleSend()});
+document.querySelectorAll('.chat-suggestion').forEach(b=>b.addEventListener('click',()=>{chatInput.value=b.dataset.q;handleSend()}));
+langToggle.addEventListener('click',()=>{bilingualMode=!bilingualMode;langToggle.textContent=bilingualMode?'Bilingual':'English'});
+
+// === GRANTS ===
+const today=new Date();
+const gd=document.getElementById('grantsDate');if(gd)gd.textContent='Updated '+today.toLocaleDateString('en-AU',{day:'numeric',month:'short',year:'numeric'});
+const grants=[
+  {title:"Indigenous Procurement Policy (IPP)",source:"Australian Government",status:"open",type:"procurement",categories:["procurement"],desc:"Mandates 3% of Commonwealth contracts be awarded to Indigenous businesses. Supply Nation certification required.",value:"Ongoing",closes:"No deadline",closesDate:null,link:"#",tags:["Federal","All sectors"]},
+  {title:"Indigenous Business Sector Strategy Grants",source:"NIAA",status:"open",type:"grant",categories:["grant"],desc:"Funding for Indigenous businesses in high-growth sectors including mining services, agriculture, and renewable energy.",value:"$50K — $500K",closes:"30 Jun 2026",closesDate:new Date(2026,5,30),link:"#",tags:["Federal","Capacity"]},
+  {title:"Carbon Farming — Emissions Reduction Fund",source:"Clean Energy Regulator",status:"open",type:"grant",categories:["agriculture","energy","land"],desc:"Earn Australian Carbon Credit Units through savanna fire management, reforestation, and soil carbon projects.",value:"Market-based",closes:"Ongoing",closesDate:null,link:"#",tags:["Federal","Carbon"]},
+  {title:"Indigenous Entrepreneurs Fund",source:"Dept of Industry",status:"open",type:"grant",categories:["grant"],desc:"Capital grants for Indigenous entrepreneurs seeking to establish, scale, or diversify commercial operations.",value:"$10K — $250K",closes:"15 Aug 2026",closesDate:new Date(2026,7,15),link:"#",tags:["Federal","Start-ups"]},
+  {title:"WA Aboriginal Procurement Policy",source:"WA Government",status:"open",type:"procurement",categories:["procurement","mining"],desc:"WA Government policy targeting 3% of state contracts to Aboriginal businesses. Significant in mining and resources.",value:"Ongoing",closes:"No deadline",closesDate:null,link:"#",tags:["WA","State contracts"]},
+  {title:"QLD Indigenous Business Growth Fund",source:"QLD Government",status:"closing",type:"grant",categories:["grant","energy"],desc:"Supports QLD Indigenous businesses to scale and participate in renewable energy and resources sectors.",value:"$25K — $200K",closes:"30 Apr 2026",closesDate:new Date(2026,3,30),link:"#",tags:["QLD","Growth"]},
+  {title:"SA Aboriginal Renewable Energy Program",source:"SA Government",status:"new",type:"grant",categories:["energy","grant"],desc:"New program for Aboriginal communities in SA to develop renewable energy projects on Aboriginal-held land.",value:"$100K — $1M",closes:"1 Sep 2026",closesDate:new Date(2026,8,1),link:"#",tags:["SA","Solar","Wind"]},
+  {title:"Indigenous Land & Sea Corporation",source:"ILSC",status:"open",type:"grant",categories:["land","agriculture"],desc:"Assists Indigenous groups to acquire and manage land for cultural, social, and economic benefit.",value:"Varies",closes:"Ongoing EOI",closesDate:null,link:"#",tags:["Federal","Land"]}
+];
+function renderGrants(filter='all'){const grid=document.getElementById('grantsGrid');if(!grid)return;grid.innerHTML='';const active=grants.filter(g=>{if(g.closesDate&&g.closesDate<today)return false;if(filter==='all')return true;return g.categories.includes(filter)||g.type===filter});active.forEach(g=>{let ds=g.status;if(g.closesDate){const dl=Math.ceil((g.closesDate-today)/(864e5));if(dl<=30)ds='closing'}const sl=ds==='closing'?'Closing Soon':ds==='new'?'New':'Open';const sc=ds==='closing'?'closing':ds==='new'?'new':'open';const c=document.createElement('div');c.className='grant-card anim';c.innerHTML=`<div class="grant-card__top"><span class="grant-card__source">${g.source}</span><span class="grant-card__status grant-card__status--${sc}">${sl}</span></div><h4>${g.title}</h4><p class="grant-card__desc">${g.desc}</p><div class="grant-card__tags">${g.tags.map(t=>'<span class="grant-card__tag">'+t+'</span>').join('')}</div><div class="grant-card__meta"><span class="grant-card__meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/></svg>${g.value}</span><span class="grant-card__meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>${g.closes}</span></div><a href="${g.link}" class="grant-card__link">Learn more <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 10h10M11 6l4 4-4 4"/></svg></a>`;grid.appendChild(c)});grid.querySelectorAll('.anim').forEach(el=>obs.observe(el))}
+document.querySelectorAll('.grants__filter').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.grants__filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderGrants(b.dataset.filter)}));
+renderGrants();
+</script>
+</body>
+</html>
